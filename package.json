@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000T\u0000i\u0000m\u0000e\u0000K\u0000e\u0000e\u0000p\u0000P\u0000a\u0000y\u0000R\u0000o\u0000l\u0000l\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidkenesaw/TimeKeepPayRoll.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidkenesaw/TimeKeepPayRoll/issues"
+  },
+  "homepage": "https://github.com/davidkenesaw/TimeKeepPayRoll#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "bcrypt": "^5.0.1",
+    "bootstrap": "^5.2.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "jquery": "^3.6.1",
+    "mysql": "^2.18.1",
+    "node-cron": "^3.0.2"
+  }
+}
