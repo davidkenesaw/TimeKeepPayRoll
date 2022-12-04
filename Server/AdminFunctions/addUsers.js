@@ -5,7 +5,7 @@ const saltRounds = 10;
 
 
 //function to register user
-function insertUser1(req, res) {
+function insertUser1(req, res) {//register a user to the database
 
     const UserName = req.body.UserName;
     const Password = req.body.Password;
@@ -14,8 +14,8 @@ function insertUser1(req, res) {
     const LastName = req.body.LastName;
     const Email = req.body.Email;
 
+    //server side data sanitization
     if (UserName.length < 5) {
-
         const error = "User name must be at least 6 characters";
         return res.render('AdminRegister', { error });
     }

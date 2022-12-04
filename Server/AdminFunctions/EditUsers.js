@@ -3,6 +3,7 @@ const {getYear,convertTimeBack, getTime, Day, GetWeek, convertTimeTo} = require(
 
 
 function displayUsers(req,res){
+    //display user times
     const CurentUser = req.session.UserName;
     
     dbConn.query("SELECT UserName FROM Users WHERE UserName != ?",[CurentUser],function(err,rows){

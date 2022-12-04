@@ -3,13 +3,11 @@ const { getYear, getTime, Day, GetWeek } = require('../ServerProcessing/TimeCalc
 const cron = require('node-cron');
 const { paymentReminder } = require('./PaymentReminder')
 
-function nextWeek() {
+function nextWeek() {//event driven function that runs every monday at 12:00 am
     cron.schedule('0 0 * * Monday', function () {
-        paymentReminder()
-        insertUser()
+        paymentReminder()//sends email to all users saying that they have recieved their payment
+        insertUser()//inserts 7 empty records for aevery user, for users to log their times
     })
-
-
 }
 
 function insertUser() {
