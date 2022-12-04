@@ -1,5 +1,6 @@
 
 function getYear(){
+    //gets the year and formats it
     let currentDate = new Date();
     let cDay = currentDate.getDate();
     let cMonth = currentDate.getMonth() + 1;
@@ -9,6 +10,7 @@ function getYear(){
     return value;
 }
 function Day(){
+    //returns string value for days in a week
     let date = new Date();
     let dayOfWeekNumber = date.getDay();
     let nameOfDay;
@@ -40,6 +42,7 @@ function Day(){
     return nameOfDay;
 }
 function getTime(){
+    //gets the current time
     let currentDate = new Date();
     let time;
     let minute = currentDate.getMinutes()
@@ -54,7 +57,7 @@ function getTime(){
     return formatTime(time); 
 }
 function formatTime(value){
-    
+    //formats the time the way the website wants it
     var myArray1= value.split(" ");
     var myArray2 = myArray1[0].split(":");
     let minute = myArray2[1];
@@ -69,7 +72,6 @@ function formatTime(value){
     return(hour + ":" + minute + " " + pmAm)
 }
 function convertTimeTo(value){
-
     if(value == "0:00"){
         return value;
     }
@@ -129,6 +131,7 @@ function convertTimeBack(value){
     return(hour1 + ":" + minute1 + " " + amPm)
 }
 function GetWeek(startDate, daysToAdd) {
+    //gets week value
     var aryDates = [];
 
     for (var i = 0; i <= daysToAdd; i++) {
@@ -144,6 +147,7 @@ function GetWeek(startDate, daysToAdd) {
 }
 
 function DayAsString(dayIndex) {
+    //returns the days as a string value
     var weekdays = new Array(7);
     weekdays[0] = "Sunday";
     weekdays[1] = "Monday";

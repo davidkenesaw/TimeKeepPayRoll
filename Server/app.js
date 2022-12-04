@@ -31,15 +31,18 @@ nextWeek()
 
 //get Pages
 
-app.get("/", IsLoggedIn, function (req, res) {//login page
+app.get("/", IsLoggedIn, function (req, res) {
+    //login page
     const error = "";
     res.render("Login", { error });
 });
-app.get("/RegisterPage", function (req, res) {//register page
+app.get("/RegisterPage", function (req, res) {
+    //register page
     const error = "";
     res.render("Register", { error });
 });
-app.get('/CodePage', function (req, res) {//enter in a code page
+app.get('/CodePage', function (req, res) {
+    //enter in a code page
     const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
     //10 digit random number
     req.session.Code = randomNumber
@@ -50,31 +53,38 @@ app.get('/CodePage', function (req, res) {//enter in a code page
     const error = "";
     res.render('CodePage', { error });
 });
-app.get('/UserRegistered', function (req, res) {//page displaying user is registered
+app.get('/UserRegistered', function (req, res) {
+    //page displaying user is registered
     res.render('Registered');
 });
-app.get("/Homepage", RequireLogin, displayTime);
-app.get("/AdminUserList", RequireAdmin, displayUsers);
-app.get("/AdminUser", RequireAdmin, getUserInfo);
-app.post("/AdminEdit", UpdateUserInfor);
-app.get("/AdminRegPage", RequireAdmin, function (req, res) {//register page
+app.get("/Homepage", RequireLogin, displayTime);//Time keeping page
+app.get("/AdminUserList", RequireAdmin, displayUsers);//display users for admin
+app.get("/AdminUser", RequireAdmin, getUserInfo);//admin can see users times
+app.post("/AdminEdit", UpdateUserInfor);//admin updaes user times
+app.get("/AdminRegPage", RequireAdmin, function (req, res) {
+    //register page
     const error = "";
     res.render("AdminRegister", { error });
 });
-app.get("/AdminError", RequireAdmin, function (req, res) {//register page
+app.get("/AdminError", RequireAdmin, function (req, res) {
+    //register page
     res.render("AdminHomeError");
 });
-app.get("/AdminNoData", RequireAdmin, function (req, res) {//register page
+app.get("/AdminNoData", RequireAdmin, function (req, res) {
+    //register page
     res.render("AdminNoDataYet");
 });
-app.get("/HomeError", function (req, res) {//register page
+app.get("/HomeError", function (req, res) {
+    //register page
     res.render("homeError");
 });
-app.get("/ForgotPasswordUserNamePage", function (req, res) {//homepage
+app.get("/ForgotPasswordUserNamePage", function (req, res) {
+    //homepage
     const error = "";
     res.render("ForgotPasswordUserName", { error });
 });
-app.get("/ForgotPasswordCodePage", function (req, res) {//homepage
+app.get("/ForgotPasswordCodePage", function (req, res) {
+    //homepage
     const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
     //10 digit random number
     req.session.CodeFP = randomNumber
@@ -85,7 +95,8 @@ app.get("/ForgotPasswordCodePage", function (req, res) {//homepage
     const error = "";
     res.render('CodePageFP', { error });
 });
-app.get("/ForgotPasswordPage", checkPass, function (req, res) {//homepage
+app.get("/ForgotPasswordPage", checkPass, function (req, res) {
+    //homepage
     const error = "";
     res.render("ChangePassword", { error });
 });
@@ -93,7 +104,7 @@ app.get("/ForgotPasswordPage", checkPass, function (req, res) {//homepage
 
 //http post requests
 app.post("/Login", LogUserIn)//login functionality
-app.post('/CompleteLogin', checkCodeEntered);
+app.post('/CompleteLogin', checkCodeEntered);//authenticates user
 app.post("/Register", insertUser1)//register functionality
 app.post("/SignOut", function (req, res) {
 

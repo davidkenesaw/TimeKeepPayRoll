@@ -2,10 +2,13 @@ const {dbConn} = require('../../Config/db.config');
 const {getYear, getTime, Day, GetWeek} = require('./TimeCalculation')
 
 function displayTime(req,res){
+    //display a users times
     const user = req.session.UserName;
     
+    //database query
     dbConn.query("(SELECT * FROM UserHours WHERE UserName = ? order by id desc limit 7) order by id asc",[user],function(err,rows){
         if(err){
+            //if an error occures
             const newListItems = [{Day: "Error, could not get data"}] 
             if(req.session.Admin == "True"){
                 res.render('homeAdmin',{newListItems});
@@ -14,6 +17,7 @@ function displayTime(req,res){
             }
         }
         else{
+            //if no error
             if(rows.length == 0){
                 const newListItems = [{Day: "User will be ready to work next week"}] 
                 if(req.session.Admin == "True"){
@@ -37,7 +41,7 @@ function displayTime(req,res){
 
 
 function ClockIn(req,res){
-
+    //add clock in time
     const clockIn = getTime()
     const UserName = req.session.UserName;
     const Date = getYear()
@@ -60,7 +64,7 @@ function ClockIn(req,res){
     });
 }
 function BreakIn(req,res){
-    
+    //add break in time
     const breakIn = getTime()
     const UserName = req.session.UserName;
     const Date = getYear()
@@ -82,7 +86,7 @@ function BreakIn(req,res){
     });
 }
 function BreakOut(req,res){
-    
+    //add break out time
     const breakOut = getTime()
     const UserName = req.session.UserName;
     const Date = getYear()
@@ -104,7 +108,7 @@ function BreakOut(req,res){
     });
 }
 function ClockOut(req,res){
-    
+    //add clock out time
     const clockOut = getTime()
     const UserName = req.session.UserName;
     const Date = getYear()
@@ -126,6 +130,7 @@ function ClockOut(req,res){
     });
 }
 function ChooseTimeSlot(req,res){
+    //chouses which query to use when add time button is clicked
     const Date = getYear()
     const user = req.session.UserName;
     dbConn.query("SELECT * FROM UserHours WHERE UserName = ? && Date = ?",[user,Date],function(err,rows){
